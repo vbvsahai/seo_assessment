@@ -1,0 +1,48 @@
+# SEO Assessment Project Configuration
+
+# Database settings
+database:
+  type: sqlite
+  path: seo_assessment.db
+
+# Input data settings
+input:
+  data_dir: data
+  gsc_dir: gsc_data
+  analytics_dir: analytics_data
+  rank_dir: rank_data
+  gsc_prefix: gsc_data
+  analytics_prefix: analytics_data
+  rank_prefix: rank_data
+
+# Processing settings
+processing:
+  log_level: INFO
+  log_file: seo_pipeline.log
+  idempotent: true
+  data_date: null  # Set to YYYY-MM-DD format or null to use current date
+  
+# SQL scripts
+sql:
+  # Staging scripts
+  ddl_dir: sql/ddl
+  
+  # Transformation scripts
+  transform_dir: sql/transform
+  transform_gsc: transform_gsc_data.sql
+  transform_analytics: transform_analytics_data.sql
+  transform_rank: transform_rank_data.sql
+  
+  # Join scripts
+  join_dir: sql/joins
+  join_gsc_analytics: join_gsc_analytics.sql
+  join_gsc_rank: join_gsc_rank.sql
+  
+  # Fact table script
+  fact_dir: sql/fact
+  fact_seo: create_fact_seo_performance.sql
+
+# Output settings
+output:
+  export_csv: true
+  export_dir: exports
